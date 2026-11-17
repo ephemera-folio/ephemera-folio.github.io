@@ -1,6 +1,6 @@
 # Photographic source catalog
 
-This is a discovery catalog of 10,000 source-linked photographic records from the Metropolitan Museum of Art and the Library of Congress. Only metadata and links are stored here. Opening the homepage does not download this catalog.
+This is a discovery catalog of 10,000 source-linked photographic records from the Metropolitan Museum of Art, the Library of Congress and Wikimedia Commons. Only metadata and links are stored here. Opening the homepage does not download this catalog.
 
 Institutional record IDs are unique. Different records or versions may depict the same photograph. The catalog is not a claim that every entry is visually reviewed, suitable for this page, or cleared for every use.
 
@@ -10,6 +10,7 @@ Sources:
 - https://github.com/metmuseum/openaccess/blob/master/MetObjects.csv
 - https://www.metmuseum.org/policies/image-resources
 - https://www.loc.gov/apis/json-and-yaml/
+- https://commons.wikimedia.org/
 
 ## Publication
 
