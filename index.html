@@ -76,6 +76,23 @@
     text-transform: uppercase;
     color: var(--muted);
   }
+  #catno {
+    position: fixed;
+    right: max(8px, env(safe-area-inset-right));
+    bottom: calc(max(84px, env(safe-area-inset-bottom)) + 4px);
+    margin: 0;
+    padding: 12px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: .75;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
   @media (orientation: landscape) and (max-height: 500px) {
     main {
       max-width: none;
@@ -113,6 +130,7 @@
     <p class="quote-credit" id="qc">Susan Sontag · On Photography, 1977</p>
   </div>
 </main>
+<p id="catno" role="button" tabindex="0" aria-label="Show another photograph">1 / 4</p>
 <script>
   var ITEMS = [
     {
@@ -157,17 +175,31 @@
     var m = location.search.match(/[?&]i=(\d+)/);
     if (m && ITEMS[+m[1]]) { i = +m[1]; }
     else { try { localStorage.setItem('ef-last', String(i)); } catch (e) {} }
-    if (i === 0) { sizeQuote(); return; }
+    if (i !== 0) { show(i); } else { sizeQuote(); }
+    var cur = i;
+    var next = function () {
+      var p = [];
+      for (var k = 0; k < ITEMS.length; k++) { if (k !== cur) p.push(k); }
+      cur = p[Math.floor(Math.random() * p.length)];
+      try { localStorage.setItem('ef-last', String(cur)); } catch (e) {}
+      show(cur);
+    };
+    var el = document.getElementById('catno');
+    el.addEventListener('click', next);
+    el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); } });
+  })();
+  function show(i) {
     var it = ITEMS[i];
     var img = document.getElementById('photo');
-    img.src = it.img;
+    if (it.img) { img.src = it.img; }
     img.alt = it.alt;
     document.getElementById('who').textContent = it.who;
     document.getElementById('when').textContent = it.when;
     document.getElementById('q').textContent = it.quote;
     document.getElementById('qc').textContent = it.credit;
+    document.getElementById('catno').textContent = (i + 1) + ' / ' + ITEMS.length;
     sizeQuote();
-  })();
+  }
   function sizeQuote() {
     var q = document.getElementById('q');
     var n = q.textContent.trim().length;
