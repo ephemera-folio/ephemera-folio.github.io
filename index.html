@@ -167,6 +167,7 @@
     }
   ];
   (function () {
+    ITEMS[0].img = document.getElementById('photo').src;
     var i, last = null;
     try { last = localStorage.getItem('ef-last'); } catch (e) {}
     var pool = [];
@@ -191,7 +192,7 @@
   function show(i) {
     var it = ITEMS[i];
     var img = document.getElementById('photo');
-    if (it.img) { img.src = it.img; }
+    img.src = it.img;
     img.alt = it.alt;
     document.getElementById('who').textContent = it.who;
     document.getElementById('when').textContent = it.when;
