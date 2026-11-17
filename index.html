@@ -22,9 +22,9 @@
     min-height: 100svh;
     box-sizing: border-box;
     padding:
-      max(26px, env(safe-area-inset-top))
+      max(20px, env(safe-area-inset-top))
       max(20px, env(safe-area-inset-right))
-      max(30px, env(safe-area-inset-bottom))
+      max(84px, env(safe-area-inset-bottom))
       max(20px, env(safe-area-inset-left));
     display: flex;
     flex-direction: column;
@@ -54,17 +54,17 @@
     display: block;
     width: 100%;
     height: auto;
-    max-height: 57svh;
+    max-height: 42svh;
     object-fit: contain;
     object-position: left top;
   }
   blockquote {
-    margin: 26px 0 0;
-    font-size: 30px;
+    margin: 24px 0 0;
+    font-size: 23px;
     font-weight: 500;
-    letter-spacing: -0.015em;
-    line-height: 1.22;
-    max-width: 24ch;
+    letter-spacing: -0.012em;
+    line-height: 1.25;
+    max-width: 26ch;
   }
   .quote-credit {
     margin: 14px 0 0;
@@ -96,6 +96,7 @@
       --ink: #f2f2ee;
       --muted: #8f8f89;
     }
+    blockquote { font-weight: 400; }
   }
 </style>
 </head>
@@ -114,7 +115,7 @@
   (function () {
     var q = document.getElementById('q');
     var n = q.textContent.trim().length;
-    q.style.fontSize = n <= 80 ? '34px' : (n <= 160 ? '30px' : '26px');
+    q.style.fontSize = n <= 80 ? '26px' : (n <= 160 ? '23px' : '20px');
   })();
 </script>
 </body>
