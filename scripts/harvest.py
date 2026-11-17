@@ -105,12 +105,12 @@ def run_loc(pool, budget_s):
     done = set(st["done_pages"])
     pending = [p for p in st["order"] if p not in done]
     added = 0
-    with ThreadPoolExecutor(max_workers=6) as ex:
+    with ThreadPoolExecutor(max_workers=2) as ex:
         futs = []
         it = iter(pending)
         active = {}
         def submit_more():
-            while len(active) < 6:
+            while len(active) < 2:
                 try:
                     p = next(it)
                 except StopIteration:
